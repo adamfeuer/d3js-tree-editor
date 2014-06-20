@@ -15,3 +15,5 @@ To Zoom out hold shift when double-clicking.
 Expanding and collapsing of nodes is achieved by clicking on the desired node.
 
 The tree auto-calculates its sizes both horizontally and vertically so it can adapt between many nodes being present in the view to very few whilst making the view managable and pleasing on the eye.
+
+For any help/queries, http://www.robschmuecker.com @robschmuecker or robert.schmuecker at gmail dot com
