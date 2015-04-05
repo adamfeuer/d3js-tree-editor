@@ -1,3 +1,6 @@
+d3js Tree Editor
+================
+
 This example pulls together various examples of work with trees in D3.js.
 
 It adds a context menu for deleting nodes and creating nodes. 
@@ -19,5 +22,14 @@ Expanding and collapsing of nodes is achieved by clicking on the desired node.
 The tree auto-calculates its sizes both horizontally and vertically so it can adapt between many nodes being present in the view to very few whilst making the view managable and pleasing on the eye.
 
 Based on https://gist.github.com/robschmuecker/7880033
+
+
+License
+=======
+
+MIT License.
+
+Contact
+=======
 
 Adam Feuer adam at adamfeuer.com or @adamfeuer
