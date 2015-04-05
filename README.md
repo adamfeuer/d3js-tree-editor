@@ -1,6 +1,6 @@
 This example pulls together various examples of work with trees in D3.js.
 
-It adds a context menu for deleting nodes and creating nodes. Creating nodes is not finished yet.
+It adds a context menu for deleting nodes and creating nodes. 
 
 The panning functionality can certainly be improved in my opinion and I would be thrilled to see better solutions contributed.
 
