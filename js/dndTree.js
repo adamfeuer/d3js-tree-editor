@@ -3,8 +3,14 @@ function close_create_node_modal() {
         $('#CreateNodeModal').foundation('reveal', 'close');
 }
 
+function close_rename_node_modal() {
+        $('#RenameNodeModal').foundation('reveal', 'close');
+}
+
 var create_node_modal_active = false;
+var rename_node_modal_active = false;
 var create_node_parent = null;
+var node_to_rename = null;
 
 function create_node() {
         if (create_node_parent && create_node_modal_active) {
@@ -25,6 +31,18 @@ function create_node() {
         }
         outer_update(create_node_parent);
         close_create_node_modal();
+}
+
+function rename_node() {
+        if (node_to_rename && rename_node_modal_active) {
+                name = $('#RenameNodeName').val()
+                console.log('New Node name: ' + name);
+                node_to_rename.name = name;
+                rename_node_modal_active = false;
+
+        }
+        outer_update(node_to_rename);
+        close_rename_node_modal();
 }
 
 outer_update = null;
@@ -62,6 +80,17 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
 
     var menu = [
             {
+                    title: 'Rename node',
+                    action: function(elm, d, i) {
+                            console.log('Rename node');
+                            $("#RenameNodeName").val(d.name);
+                            rename_node_modal_active = true;
+                            node_to_rename = d
+                            $("#RenameNodeName").focus();
+                            $('#RenameNodeModal').foundation('reveal', 'open');
+                    }
+            },
+            {
                     title: 'Delete node',
                     action: function(elm, d, i) {
                             console.log('Delete node');
@@ -75,6 +104,7 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
                             create_node_parent = d;
                             create_node_modal_active = true;
                             $('#CreateNodeModal').foundation('reveal', 'open');
+                            $('#CreateNodeName').focus();
                     }
             }
     ]
@@ -595,3 +625,4 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
     update(root);
     centerNode(root);
 });
+
