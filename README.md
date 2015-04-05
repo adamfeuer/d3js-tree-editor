@@ -1,5 +1,7 @@
 This example pulls together various examples of work with trees in D3.js.
 
+It adds a context menu for deleting nodes and creating nodes. Creating nodes is not finished yet.
+
 The panning functionality can certainly be improved in my opinion and I would be thrilled to see better solutions contributed.
 
 One can do all manner of housekeeping or server related calls on the drop event to manage a remote tree dataset for example.
@@ -16,4 +18,6 @@ Expanding and collapsing of nodes is achieved by clicking on the desired node.
 
 The tree auto-calculates its sizes both horizontally and vertically so it can adapt between many nodes being present in the view to very few whilst making the view managable and pleasing on the eye.
 
-For any help/queries, http://www.robschmuecker.com @robschmuecker or robert.schmuecker at gmail dot com
+Based on https://gist.github.com/robschmuecker/7880033
+
+Adam Feuer adam at adamfeuer.com or @adamfeuer

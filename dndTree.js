@@ -28,6 +28,23 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
             return [d.y, d.x];
         });
 
+    var menu = [
+            {
+                    title: 'Delete node',
+                    action: function(elm, d, i) {
+                            console.log('Delete node');
+                            delete_node(d);
+                    }
+            },
+            {
+                    title: 'Create child node',
+                    action: function(elm, d, i) {
+                            console.log('Create child node');
+                    }
+            }
+    ]
+
+
     // A recursive helper function for performing some setup by walking through all nodes
 
     function visit(parent, visitFn, childrenFn) {
@@ -52,6 +69,23 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
     }, function(d) {
         return d.children && d.children.length > 0 ? d.children : null;
     });
+
+    function delete_node(node) {
+        visit(treeData, function(d) {
+               if (d.children) {
+                       for (var child of d.children) {
+                               if (child == node) {
+                                       d.children = _.without(d.children, child);
+                                       update(root);
+                                       break;
+                               }
+                       } 
+               }
+        },
+        function(d) {
+           return d.children && d.children.length > 0 ? d.children : null;
+       });
+    }
 
 
     // sort the tree according to the node names
@@ -435,6 +469,10 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
             .style("fill", function(d) {
                 return d._children ? "lightsteelblue" : "#fff";
             });
+
+        // Add a context menu
+        node.on('contextmenu', d3.contextMenu(menu));
+
 
         // Transition nodes to their new position.
         var nodeUpdate = node.transition()
