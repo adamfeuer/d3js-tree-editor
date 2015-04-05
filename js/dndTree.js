@@ -7,6 +7,7 @@ function close_rename_node_modal() {
         $('#RenameNodeModal').foundation('reveal', 'close');
 }
 
+var tree_root;
 var create_node_modal_active = false;
 var rename_node_modal_active = false;
 var create_node_parent = null;
@@ -48,11 +49,32 @@ function rename_node() {
         close_rename_node_modal();
 }
 
+function save_tree() {
+        var cache = [];
+        $.ajax('/tree', {
+            contentType : 'application/json',
+            type : 'POST',
+            data : JSON.stringify(tree_root, function(key, value) {
+                    if (typeof value === 'object' && value !== null) {
+                        if (cache.indexOf(value) !== -1) {
+                            // Circular reference found, discard key
+                            return;
+                        }
+                        // Store value in our collection
+                        cache.push(value);
+                    }
+                    return value;
+                }),
+               });
+        cache = null;
+        outer_update(tree_root);
+}
+
 outer_update = null;
 
 
 // Get JSON data
-treeJSON = d3.json("flare.json", function(error, treeData) {
+treeJSON = d3.json("/tree", function(error, treeData) {
 
     // Calculate total nodes, max label length
     var totalNodes = 0;
@@ -108,6 +130,13 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
                             create_node_modal_active = true;
                             $('#CreateNodeModal').foundation('reveal', 'open');
                             $('#CreateNodeName').focus();
+                    }
+            },
+            {
+                    title: 'Save tree',
+                    action: function(elm, d, i) {
+                            console.log('Saving tree...');
+                            save_tree();
                     }
             }
     ]
@@ -627,5 +656,6 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
     // Layout the tree initially and center on the root node.
     update(root);
     centerNode(root);
+    tree_root = root;
 });
 

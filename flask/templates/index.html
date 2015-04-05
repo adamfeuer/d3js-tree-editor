@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h3 class="text-muted">JSON responses</h3>
+			</div>
+			<hr/>
+			<div>
+				<p>Many times, an API will return a JSON-encoded response. One
+				such example is <a href="http://developer.github.com/">GitHub's API</a>.</p>
+				<p>To fiddle with a JSON response, requests includes a <code>json()</code>
+				method for the response object, which can be acessed like a regular dict:</p>
+<pre>
+r = requests.get(url, params=params)
+
+data_from_json = r.json()['some_key']
+</pre>
+			</div>
+			<div class="well">
+<pre>
+import requests
+import json
+
+url = 'https://api.github.com/users/runnable'
+
+r = requests.get(url)
