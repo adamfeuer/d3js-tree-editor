@@ -70,6 +70,24 @@
                     });
                     element.focus();
                 });
+                $('#RenameNodeName').bind("rename_node_enter",function(e){
+                        rename_node();
+                });
+                $('#RenameNodeName').keyup(function(e){
+                    if(e.keyCode == 13)
+                    {
+                        $(this).trigger("rename_node_enter");
+                    }
+                });
+                $('#CreateNodeName').bind("create_node_enter",function(e){
+                        create_node();
+                });
+                $('#CreateNodeName').keyup(function(e){
+                    if(e.keyCode == 13)
+                    {
+                        $(this).trigger("create_node_enter");
+                    }
+                });
         </script>
 </body>
 </html>
