@@ -1,3 +1,35 @@
+
+function close_create_node_modal() {
+        $('#CreateNodeModal').foundation('reveal', 'close');
+}
+
+var create_node_modal_active = false;
+var create_node_parent = null;
+
+function create_node() {
+        if (create_node_parent && create_node_modal_active) {
+                if (create_node_parent._children)  {
+                        create_node_parent.children = create_node_parent._children;
+                        create_node_parent._children = null;
+                }
+                new_node = Object();
+                new_node._children = []
+                new_node.children = null
+                name = $('#CreateNodeName').val()
+                console.log('Create Node name: ' + name);
+                new_node.name = name;
+                create_node_parent.children.push(new_node);
+                create_node_modal_active = false;
+                $('#CreateNodeName').val('')
+
+        }
+        outer_update(create_node_parent);
+        close_create_node_modal();
+}
+
+outer_update = null;
+
+
 // Get JSON data
 treeJSON = d3.json("flare.json", function(error, treeData) {
 
@@ -40,6 +72,9 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
                     title: 'Create child node',
                     action: function(elm, d, i) {
                             console.log('Create child node');
+                            create_node_parent = d;
+                            create_node_modal_active = true;
+                            $('#CreateNodeModal').foundation('reveal', 'open');
                     }
             }
     ]
@@ -545,6 +580,8 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
             d.y0 = d.y;
         });
     }
+
+    outer_update = update;
 
     // Append a group which holds all nodes and which the zoom Listener can act upon.
     var svgGroup = baseSvg.append("g");
