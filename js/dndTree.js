@@ -18,9 +18,12 @@ function create_node() {
                         create_node_parent.children = create_node_parent._children;
                         create_node_parent._children = null;
                 }
+                if (!create_node_parent.children) {
+                        create_node_parent.children = []
+                }
                 new_node = Object();
-                new_node._children = []
-                new_node.children = null
+                new_node.children = []
+                new_node._children = null
                 name = $('#CreateNodeName').val()
                 console.log('Create Node name: ' + name);
                 new_node.name = name;
