@@ -11,8 +11,8 @@
                 <div class="large-10 columns">
                         <ul class="button-group radius even-3">
                                 <li><a href="#" class="button small radius success" onclick="save_tree()">Save tree</a></li>
-                                <li><a href="#" class="button small radius info">Download JSON tree file</a></li>
-                                <li><a href="#" class="button small radius info">Upload JSON tree file</a></li>
+                                <li><a href="/tree/file" class="button small radius info">Download JSON tree file</a></li>
+                                <li><a href="#" class="button small radius info" data-reveal-id="UploadFileModal">Upload JSON tree file</a></li>
                         </ul>
                 </div>
                 <div class="large-2 columns">
@@ -34,14 +34,13 @@
                 &nbsp;
               </div>
               <div class="large-4 columns">
-                <a href="#" class="button info" onclick="close_rename_node_modal()">Cancel</a>
+                <a href="#" class="button info" onclick="close_modal()">Cancel</a>
                 <a href="#" class="button success" onclick="rename_node()">Rename</a>
               </div>
             </div>
           </form>
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
         </div>
-
         <div id="CreateNodeModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
           <h2 id="modalTitle">Create Node</h2>
           <form>
@@ -57,13 +56,33 @@
                 &nbsp;
               </div>
               <div class="large-4 columns">
-                <a href="#" class="button info" onclick="close_create_node_modal()">Cancel</a>
+                <a href="#" class="button info" onclick="close_modal()">Cancel</a>
                 <a href="#" class="button success" onclick="create_node()">Create</a>
               </div>
             </div>
           </form>
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
         </div>
+        <div id="UploadFileModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+          <h2 id="modalTitle">Upload JSON tree file</h2>
+          <form action="/tree/file" method="post" enctype="multipart/form-data">
+            <div class="row">
+              <div class="large-12 columns">
+                <label>JSON tree file
+                        <input type="file" name="flare.json" accept="application/json">
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="large-12 columns">
+                <a href="#" class="button info" onclick="close_modal()">Cancel</a>
+                <input type="submit" class="button success" value="Upload file">
+              </div>
+            </div>
+          </form>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+        </div>
+
         <script src="js/vendor/underscore-min.js"></script>
         <script src="js/vendor/fastclick.js"></script>
         <script src="http://d3js.org/d3.v3.min.js"></script>

@@ -1,10 +1,5 @@
-
-function close_create_node_modal() {
-        $('#CreateNodeModal').foundation('reveal', 'close');
-}
-
-function close_rename_node_modal() {
-        $('#RenameNodeModal').foundation('reveal', 'close');
+function close_modal() {
+        $(document).foundation('reveal', 'close');
 }
 
 var tree_root;
