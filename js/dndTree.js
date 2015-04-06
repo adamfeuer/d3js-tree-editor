@@ -8,21 +8,34 @@ var rename_node_modal_active = false;
 var create_node_parent = null;
 var node_to_rename = null;
 
+function generateUUID(){
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+};
+
 function create_node() {
         if (create_node_parent && create_node_modal_active) {
-                if (create_node_parent._children)  {
+                if (create_node_parent._children != null)  {
                         create_node_parent.children = create_node_parent._children;
                         create_node_parent._children = null;
                 }
-                if (!create_node_parent.children) {
+                if (create_node_parent.children == null) {
                         create_node_parent.children = [];
                 }
-                new_node = Object();
-                new_node.children = [];
-                new_node._children = null;
+                id = generateUUID(); 
                 name = $('#CreateNodeName').val();
+                new_node = { 'name': name, 
+                             'id' :  id,
+                             'depth': create_node_parent.depth + 1,                           
+                             'children': [], 
+                             '_children':null 
+                           };
                 console.log('Create Node name: ' + name);
-                new_node.name = name;
                 create_node_parent.children.push(new_node);
                 create_node_modal_active = false;
                 $('#CreateNodeName').val('');
@@ -484,7 +497,7 @@ treeJSON = d3.json("/tree", function(error, treeData) {
             d.y = (d.depth * (maxLabelLength * 10)); //maxLabelLength * 10px
             // alternatively to keep a fixed scale one can set a fixed depth per level
             // Normalize for fixed-depth by commenting out below line
-            // d.y = (d.depth * 500); //500px per level.
+            // d.y = (d.depth * 300); //500px per level.
         });
 
         // Update the nodes…
