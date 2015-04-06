@@ -58,7 +58,7 @@ def send_web(path):
 # Define a route for the webserver
 @app.route('/')
 def index():
-       return send_from_directory('..', path)
+       return redirect('/web/index.html')
 
 if __name__ == '__main__':
 	app.run( 

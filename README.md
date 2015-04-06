@@ -19,6 +19,11 @@ Expanding and collapsing of nodes is achieved by clicking on the desired node.
 
 The tree auto-calculates its sizes both horizontally and vertically so it can adapt between many nodes being present in the view to very few whilst making the view managable and pleasing on the eye.
 
+The tree must be served by the flask webserver in the flask/ subdirectory. 
+Start it by executing:
+
+    $ python app.py
+
 Based on https://gist.github.com/robschmuecker/7880033
 
 
