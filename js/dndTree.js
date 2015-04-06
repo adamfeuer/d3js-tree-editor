@@ -15,33 +15,33 @@ function create_node() {
                         create_node_parent._children = null;
                 }
                 if (!create_node_parent.children) {
-                        create_node_parent.children = []
+                        create_node_parent.children = [];
                 }
                 new_node = Object();
-                new_node.children = []
-                new_node._children = null
-                name = $('#CreateNodeName').val()
+                new_node.children = [];
+                new_node._children = null;
+                name = $('#CreateNodeName').val();
                 console.log('Create Node name: ' + name);
                 new_node.name = name;
                 create_node_parent.children.push(new_node);
                 create_node_modal_active = false;
-                $('#CreateNodeName').val('')
+                $('#CreateNodeName').val('');
 
         }
+        close_modal();
         outer_update(create_node_parent);
-        close_create_node_modal();
 }
 
 function rename_node() {
         if (node_to_rename && rename_node_modal_active) {
-                name = $('#RenameNodeName').val()
+                name = $('#RenameNodeName').val();
                 console.log('New Node name: ' + name);
                 node_to_rename.name = name;
                 rename_node_modal_active = false;
 
         }
+        close_modal();
         outer_update(node_to_rename);
-        close_rename_node_modal();
 }
 
 function save_tree() {
