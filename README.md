@@ -5,6 +5,8 @@ This example pulls together various examples of work with trees in D3.js.
 
 It adds a context menu for renaming, deleting and creating nodes. Right-click on a node to get the context menu for rename, delete and create.
 
+There are also buttons for saving the tree, downloading it, and uploading a saved version.
+
 The panning functionality can certainly be improved in my opinion and I would be thrilled to see better solutions contributed.
 
 One can do all manner of housekeeping or server related calls on the drop event to manage a remote tree dataset for example.
