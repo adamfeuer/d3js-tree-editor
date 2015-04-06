@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="css/foundation.css" />
-<link rel="stylesheet" href="css/app.css" />
-<link rel="stylesheet" href="css/d3-context-menu.css" />
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/foundation.css" />
+        <link rel="stylesheet" href="css/d3-context-menu.css" />
+        <link rel="stylesheet" href="css/toastr.css" />
+        <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
+        <div class="row">
+                <div class="large-10 columns">
+                        <ul class="button-group radius even-3">
+                                <li><a href="#" class="button small radius success" onclick="save_tree()">Save tree</a></li>
+                                <li><a href="#" class="button small radius info">Download JSON tree file</a></li>
+                                <li><a href="#" class="button small radius info">Upload JSON tree file</a></li>
+                        </ul>
+                </div>
+                <div class="large-2 columns">
+                </div>
+        </div>
+        <div id="tree-container"></div>
         <div id="RenameNodeModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
           <h2 id="modalTitle">Rename Node</h2>
           <form>
@@ -51,16 +64,14 @@
           </form>
           <a class="close-reveal-modal" aria-label="Close">&#215;</a>
         </div>
-
-        <div id="tree-container"></div>
-
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-        <script src="js/dndTree.js"></script>
-        <script src="js/vendor/d3-context-menu.js"></script>
         <script src="js/vendor/underscore-min.js"></script>
-        <script src="js/vendor/jquery.js"></script>
         <script src="js/vendor/fastclick.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="js/vendor/jquery.js"></script>
         <script src="js/foundation.min.js"></script>
+        <script src="js/dndTree.js"></script>
+        <script src="js/vendor/toastr.js"></script>
+        <script src="js/vendor/d3-context-menu.js"></script>
         <script>
                 $(document).foundation();
                 $(document).on('opened', '[data-reveal]', function () {

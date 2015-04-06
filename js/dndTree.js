@@ -68,6 +68,7 @@ function save_tree() {
                });
         cache = null;
         outer_update(tree_root);
+        toastr.success('Tree saved.')
 }
 
 outer_update = null;
@@ -130,13 +131,6 @@ treeJSON = d3.json("/tree", function(error, treeData) {
                             create_node_modal_active = true;
                             $('#CreateNodeModal').foundation('reveal', 'open');
                             $('#CreateNodeName').focus();
-                    }
-            },
-            {
-                    title: 'Save tree',
-                    action: function(elm, d, i) {
-                            console.log('Saving tree...');
-                            save_tree();
                     }
             }
     ]
