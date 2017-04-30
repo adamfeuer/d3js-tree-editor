@@ -20,9 +20,26 @@ Expanding and collapsing of nodes is achieved by clicking on the desired node.
 The tree auto-calculates its sizes both horizontally and vertically so it can adapt between many nodes being present in the view to very few whilst making the view managable and pleasing on the eye.
 
 The tree must be served by the flask webserver in the flask/ subdirectory. 
-Start it by executing:
+
+Installing
+==========
+
+$ cd flask/
+$ pip install -r requirements.txt
+
+
+Running
+=======
+
+Start the flask web server by executing:
 
     $ python app.py
+
+
+To upload a new tree file, first download an example json file by clicking the "Download JSON tree file" button. 
+
+Edit the file, then click "Upload JSON tree file" and select the new JSON file you edited.
+
 
 Based on https://gist.github.com/robschmuecker/7880033
 
