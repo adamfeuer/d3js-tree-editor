@@ -1,5 +1,4 @@
-d3js Tree Editor
-================
+# d3js Tree Editor
 
 This is a basic tree editor written in Javascript and [d3js](http://d3js.org/).
 
@@ -21,18 +20,26 @@ The tree auto-calculates its sizes both horizontally and vertically so it can ad
 
 The tree must be served by the flask webserver in the flask/ subdirectory. 
 
-Installing
-==========
+## Installing
 
-$ cd flask/
-$ pip install -r requirements.txt
+### Pipenv
+
+    $ cd flask/
+    $ pipenv install
+    $ pipenv shell
 
 
-Running
-=======
+### Pip
+
+    $ cd flask/
+    $ pip install -r requirements.txt
+
+
+## Running
 
 Start the flask web server by executing:
 
+    
     $ python app.py
 
 
@@ -44,12 +51,11 @@ Edit the file, then click "Upload JSON tree file" and select the new JSON file y
 Based on https://gist.github.com/robschmuecker/7880033
 
 
-License
-=======
+## License
+
 
 MIT License.
 
-Contact
-=======
+## Contact
 
 Adam Feuer adam at adamfeuer.com or @adamfeuer
