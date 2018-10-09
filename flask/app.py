@@ -27,7 +27,7 @@ def tree():
     if request.method == 'POST':
        content = request.data
        with open(TREE_FILENAME, 'w') as tree_file:
-           tree_file.write(content)
+           tree_file.write(content.decode("utf-8"))
        return "saved."
     else:
        with open(TREE_FILENAME, 'r') as tree_file:
